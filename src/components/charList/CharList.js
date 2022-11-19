@@ -7,7 +7,6 @@ import './charList.scss';
 
 
 class CharList extends Component {
-
     state = {
         charList: [],
         loading: true,
