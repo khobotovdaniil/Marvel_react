@@ -71,6 +71,10 @@ class CharList extends Component {
         this.itemRefs[id].focus();
 	}
 
+    getCharPos = (id) => {
+        return (this.itemRefs[id].offsetTop);
+    }
+
     renderItems(arr) {
         const items =  arr.map((item, i) => {
             let imgStyle = {'objectFit' : 'cover'};
@@ -87,6 +91,7 @@ class CharList extends Component {
                     onClick={() => {
                             this.props.onCharSelected(item.id)
                             this.focusOnItem(i)
+                            this.props.getCharPosition(this.getCharPos(i));
                         }}
                     onKeyPress={(e) => {
                         if (e.key === ' ' || e.key === "Enter") {
