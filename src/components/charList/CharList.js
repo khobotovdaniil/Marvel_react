@@ -42,15 +42,15 @@ const CharList = (props) => {
         }
 
         setCharList(charList => [...charList, ...newCharList]);
-        setLoading(loading => false);
-        setNewItemLoading(newItemLoading => false);
+        setLoading(false);
+        setNewItemLoading(false);
         setOffset(offset => offset + 3);
-        setCharEnded(charEnded => ended);
+        setCharEnded(ended);
     }
 
     const onError = () => {
         setError(true);
-        setLoading(loading => false);
+        setLoading(false);
     }
 
     const itemRefs = useRef([]);
