@@ -30,7 +30,6 @@ const CharInfo = (props) => {
     }
 
     const onCharLoaded = (char) => {
-
         setChar(char);
     }
 
