@@ -48,9 +48,10 @@ const useMarvelService = () => {
             title: comics.title,
             description: comics.description || 'There is no description',
             thumbnail: comics.thumbnail.path + '.' + comics.thumbnail.extension,
-            price: comics.prices.price ? `${comics.prices.price}$` : 'NOT AVAILABLE',
+            price: comics.prices.price ? `${comics.prices.price}$` : 'Price is not available',
             pageCount: comics.pageCount ? `${comics.pageCount} pages` : 'No information about the number of pages',
             language: comics.textObjects.language || 'en-us',
+            creators: comics.creators.items,
         }
     }
 

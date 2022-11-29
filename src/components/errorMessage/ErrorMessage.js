@@ -14,7 +14,6 @@ const ErrorMessage = (props) => {
 
 const View = () => {
     const navigate = useNavigate();
-    console.log(navigate(-1));
     return (
         <>
             <p style={{'textAlign': 'center', 'fontWeight': 'bold', 'fontSize': '24px'}}>Error, try another one</p>
