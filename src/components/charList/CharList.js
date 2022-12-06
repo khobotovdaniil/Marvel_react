@@ -9,8 +9,6 @@ import ErrorMessage from '../errorMessage/ErrorMessage';
 import './charList.scss';
 
 const CharList = (props) => {
-    const duration = 900;
-
     const [charList, setCharList] = useState([]);
     const [newItemLoading, setNewItemLoading] = useState(false);
     const [offset, setOffset] = useState(210);
@@ -31,13 +29,13 @@ const CharList = (props) => {
     const onCharListLoaded = (newCharList) => {
         // const newOffset =  Math.floor(Math.random() * 1559);
         let ended = false;
-        if (newCharList.length < 3) {
+        if (newCharList.length < 6) {
             ended = true;
         }
 
         setCharList([...charList, ...newCharList]);
         setNewItemLoading(false);
-        setOffset(offset => offset + 3);
+        setOffset(offset => offset + 6);
         setCharEnded(ended);
     }
 
@@ -63,7 +61,7 @@ const CharList = (props) => {
             return (
                 <CSSTransition
                     key={item.id}
-                    timeout={duration}
+                    timeout={700}
                     classNames="char__item">
                     <li 
                         className="char__item"

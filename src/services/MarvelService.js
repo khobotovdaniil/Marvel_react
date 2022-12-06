@@ -6,7 +6,7 @@ const useMarvelService = () => {
     const _apiBase = 'https://gateway.marvel.com:443/v1/public/';
     const _apiKey = 'apikey=c7a7c2ee87cb7d02d52a844620fbc6f9';
     const _baseCharOffset = 210;
-    const _baseCharLimit = 3;
+    const _baseCharLimit = 6;
     const _baseComicsOffset = 0;
     const _baseComicsLimit = 8;
 
@@ -34,7 +34,8 @@ const useMarvelService = () => {
         return {
             id: char.id,
             name: char.name,
-            description: char.description ? `${char.description.slice(0, 210)}...` : 'There is no description for this character',
+            description: char.description ? `${char.description.slice(0, 100)}...` : 'There is no description for this character',
+            fullDescription: char.description ? char.description : 'There is no description for this character',
             thumbnail: char.thumbnail.path + '.' + char.thumbnail.extension,
             homepage: char.urls[0].url,
             wiki: char.urls[1].url,

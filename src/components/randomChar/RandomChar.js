@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import { Link } from "react-router-dom"
+
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 import useMarvelService from '../../services/MarvelService';
@@ -60,7 +62,7 @@ const RandomChar = () => {
 }
 
 const View = ({char}) => {
-    const {name, description, thumbnail, homepage, wiki} = char;
+    const {name, description, thumbnail, id, homepage} = char;
 
     let imgStyle = {'objectFit' : 'cover'};
     if (thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg') {
@@ -76,11 +78,11 @@ const View = ({char}) => {
                     {description}
                 </p>
                 <div className="randomchar__btns">
-                    <a href={homepage} className="button button__main">
+                    <Link to={`/characters/${id}`} className="button button__main">
+                        <div className="inner">Character</div>
+                    </Link>
+                    <a href={homepage} className="button button__secondary">
                         <div className="inner">homepage</div>
-                    </a>
-                    <a href={wiki} className="button button__secondary">
-                        <div className="inner">Wiki</div>
                     </a>
                 </div>
             </div>

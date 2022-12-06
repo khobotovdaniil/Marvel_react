@@ -37,14 +37,14 @@
         }
         &-enter-active {
             opacity: 1;
-            transition: opacity 900ms ease-in;
+            transition: opacity 700ms ease-in;
         }
         &-exit {
             opacity: 1;
         }
         &-exit-active {
             opacity: 0;
-            transition: opacity 900ms ease-in;
+            transition: opacity 700ms ease-in;
         }
     }
     &__name {

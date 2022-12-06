@@ -13,9 +13,8 @@ const AppHeader = () => {
             <nav className="app__menu">
                 <ul>
                     <li><NavLink 
-                        end
                         className={({isActive}) => (isActive ? "active" : "")}
-                        to="/">Characters</NavLink></li>
+                        to="/characters">Characters</NavLink></li>
                     /
                     <li><NavLink
                         className={({isActive}) => (isActive ? "active" : "")}
