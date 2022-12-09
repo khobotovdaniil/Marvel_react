@@ -34,20 +34,13 @@ const CharInfo = (props) => {
         setChar(char);
     }
 
-    const {charPos} = props;
-
     const skeleton = char || loading || error ? null : <Skeleton/>;
     const errorMessage = error ? <ErrorMessage/> : null;
     const spinner = loading ? <Spinner/> : null;
     const content = !(loading || error || !char) ? <View char={char}/> : null;
 
-    let charInfoStyle = {}
-    if (charPos) {
-        charInfoStyle = {'position': 'absolute', 'left': '675px', 'top': `${charPos}px`};
-    }
-
     return (
-        <div className="char__info" style={charInfoStyle}>
+        <div className="char__info">
             {skeleton}
             {errorMessage}
             {spinner}
