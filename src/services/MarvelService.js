@@ -58,6 +58,7 @@ const useMarvelService = () => {
             pageCount: comics.pageCount ? `${comics.pageCount} pages` : 'No information about the number of pages',
             language: comics.textObjects.language || 'en-us',
             creators: comics.creators.items,
+            characters: comics.characters.items,
         }
     }
 
