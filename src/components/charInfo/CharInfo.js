@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import { PropTypes } from 'prop-types';
 import { Link } from "react-router-dom"
+import { TransitionGroup } from 'react-transition-group';
 
 import useMarvelService from '../../services/MarvelService';
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 import Skeleton from '../skeleton/Skeleton';
+import ItemList from '../itemList/ItemList';
 
 import './charInfo.scss';
 
@@ -51,22 +53,14 @@ const CharInfo = (props) => {
 
 const View = ({char}) => {
     const {name, id, description, thumbnail, homepage, comics} = char;
+    const [showList, setShowList] = useState(false);
+    const [showbutton, setShowButton] = useState(true);
+
 
     let imgStyle = {'objectFit' : 'cover'};
     if (thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg') {
         imgStyle = {'objectFit' : 'contain'};
     }
-
-    const comicsList = !comics ? null : comics.map((item, i) => {
-        // eslint-disable-next-line 
-        if (i > 9) return;
-        const comicURL = item.resourceURI.split('/');
-        return (
-            <Link to={`/comics/${comicURL[comicURL.length - 1]}`} className="char__comics-item" key={i}>
-                <li>{item.name}</li>
-            </Link>    
-        )                          
-    })
     
     return (
         <>
@@ -89,8 +83,19 @@ const View = ({char}) => {
             </div>
             <div className="char__comics">Comics:</div>
             <ul className="char__comics-list">
-                {comics.length > 0 ? null : 'There is no comics with this character'}
-                {comicsList}         
+                {
+                    comics.length > 0 ? 
+                        <button 
+                            className='button button__main'
+                            style={{'display' : showbutton ? 'block' : 'none', 'margin' : '0 auto'}}
+                            onClick={() => setShowList(true)}>
+                            <div className="inner">Show comics</div>
+                        </button> :
+                        'There is no comics with this character'
+                }
+                <TransitionGroup component={null}>
+                    <ItemList list={comics} listClass='char__comics-item' listName='comics' showList={showList} setShowButton={setShowButton}/>
+                </TransitionGroup>   
             </ul>
         </>
     )

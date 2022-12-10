@@ -1,19 +1,12 @@
 import { Link, useNavigate } from 'react-router-dom';
+import ItemList from '../../itemList/ItemList';
+
 import './singleComicLayout.scss';
 
 
 const SingleComicLayout = ({data}) => {
     const {title, description, pageCount, thumbnail, language, price, creators, characters} = data;
     const navigate = useNavigate();
-
-    const charList = !characters ? null : characters.map((item, i) => {
-        const charURL = item.resourceURI.split('/');
-        return (
-            <Link to={`/characters/${charURL[charURL.length - 1]}`} key={i} className='single-comic__wrapper-item'>
-                <li>{item.name}</li>
-            </Link>
-        )
-    })
 
     const crearotsList = !creators ? null : creators.map((item, i) => {
         return (
@@ -34,7 +27,7 @@ const SingleComicLayout = ({data}) => {
                     <div>
                         <h3 className='single-comic__wrapper-header'>Characters:</h3>
                         <ul>
-                            {charList}
+                            <ItemList list={characters} listClass='single-comic__wrapper-item' listName='characters'/>
                         </ul>
                     </div>
                     <div>
