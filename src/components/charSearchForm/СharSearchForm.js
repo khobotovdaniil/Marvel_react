@@ -19,7 +19,7 @@ const CharSearchForm = () => {
     const updateChar = (name) => {
         clearError();
 
-        getCharacterByName(name)
+        getCharacterByName(name)                     
             .then(onCharLoaded);
     }
 
@@ -60,7 +60,7 @@ const CharSearchForm = () => {
                             type='submit'
                             className="button button__main"
                             disabled={loading}>
-                                <div className="inner">find</div>
+                            <div className="inner">find</div>
                         </button>
                     </div>
                     <FormikErrorMessage className="char__search-error" name="charName" component="div"/>
