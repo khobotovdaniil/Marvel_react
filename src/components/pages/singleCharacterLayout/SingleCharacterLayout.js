@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import ItemList from '../../itemList/ItemList';
-import { Helmet } from 'react-helmet';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 import './singleCharacterLayout.scss'
 
@@ -15,13 +15,15 @@ const SingleCharacterLayout = ({data}) => {
 
     return (
         <div className="single-character">
-            <Helmet>
-                <meta
-                    name="description"
-                    content={`${name} character`}
-                />
-                <title>{name}</title>
-            </Helmet>
+            <HelmetProvider>
+                <Helmet>
+                    <meta
+                        name="description"
+                        content={`${name} character`}
+                    />
+                    <title>{name}</title>
+                </Helmet>
+            </HelmetProvider>
             <img src={thumbnail} alt={name} style={imgStyle} className="single-character__img"/>
             <div className="single-character__info">
                 <h2 className="single-character__name">{name}</h2>
