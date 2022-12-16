@@ -9,6 +9,7 @@ const ItemList = (props) => {
         const itemUrl = item.resourceURI.split('/')
         return (
             <CSSTransition
+                    key={i}
                     in={showList}
                     timeout={700}
                     classNames={listClass}
